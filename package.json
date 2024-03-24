@@ -1,0 +1,24 @@
+{
+  "name": "mijn_electron_app",
+  "productName": "RadioNet",
+  "version": "1.0.0",
+  "description": "Een eenvoudige Electron-applicatie",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "package": "electron-builder"
+  },
+  "author": "Jessie Flessi",
+  "license": "MIT",
+  "build": {
+    "appId": "com.jesse.radionet",
+    "productName": "RadioNet",
+    "icon": "icon.ico",
+    "files": "icon.ico"
+  },
+  "devDependencies": {
+    "electron": "^29.1.5",
+    "electron-builder": "^24.13.3"
+  }
+}

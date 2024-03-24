@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioNet</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <style>
+        @font-face {
+    font-family: 'SF Pro Rounded';
+    src: url('SF-Pro-Rounded-Regular.otf') format('opentype');
+    /* Voeg hier andere varianten toe zoals bold, italic, etc. indien beschikbaar */
+}
+        body {
+            background-color: aliceblue;
+            font-family: 'SF Pro Rounded', sans-serif;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .overlay:hover {
+            opacity: 1;
+        }
+
+        .play-pause-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .play-pause-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .audio-player {
+            display: none;
+        }
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+        header {
+            color: white;
+            padding: 10px 0;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            left: 0;
+            margin-bottom: 20px;
+        }
+
+        #logo {
+            width: 300px;
+        }
+    </style>
+</head>
+<header>
+    <img src="logo.png" id="logo">
+</header>
+<body>
+    <div class="padding"></div>
+    <div class="image-container">
+        <img src="https://cdn-profiles.tunein.com/s87683/images/logod.png?t=637242026890000000" alt="Image">
+        <p>Q-music</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player1">▶️</button>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://www.radio.pl/images/broadcasts/3b/92/2126/3/c300.png" alt="Image">
+        <p>Slam</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player2">▶️</button>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0VPszZOcX_H_Knm0nXrVoDnoRWsXtb7ZkQFz7YHJH0w&s" alt="Image">
+        <p>Skyradio</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player3">▶️</button>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://pbs.twimg.com/profile_images/1479082483824087040/xqGD94TD_400x400.jpg" alt="Image">
+        <p>Radio 538</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player4">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf7EXzSuKNeIto0IjKGjsxW-V7n6k0m2H6jHK5H5czDw&s" alt="Image">
+        <p>Npo radio 1</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player5">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.radiozenders.fm/media/images/stations/npo-radio-2.png" alt="Image">
+        <p>Npo radio 2</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player6">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.npo3fm.nl/svg/npo_3fm_logo.svg" alt="Image">
+        <p>Npo radio 3</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player7">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQidylMjmqz4jJHaZJla0v-oG562qWowhQ47hmDkN7s3Q&s" alt="Image">
+        <p>Npo radio 4</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player8">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQxYwEgAiZ_79032b_4PD0lVGawIBTOOsSQbW4eQ5DvZY1dKOuTfMUBx7AGbjmKB5jwxo&usqp=CAU" alt="Image">
+        <p>Npo radio 5</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player9">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw8_pI0ln_ePIhZ53qN_A0qheFA8vGK9dAYPhVCEIyUg&s" alt="Image">
+        <p>100%NL</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player10">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://radioonlineluisteren.nl/wp-content/uploads/2021/05/Sublime-FM.jpeg" alt="Image">
+        <p>Sublime FM</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player11">▶️</button>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="https://cdn-profiles.tunein.com/s16793/images/logog.png?t=1" alt="Image">
+        <p>Radio 10</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player12">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/efteling-kids-radio" alt="Image">
+        <p>Efteling kids radio</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player13">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/funx" alt="Image">
+        <p>FunX</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player14">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/bnr" alt="Image">
+        <p>BNR</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player15">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/omrop-fryslan" alt="Image">
+        <p>Omrop Fryslan</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player16">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/rtv-noord" alt="Image">
+        <p>Rtv Noord</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player17">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/radio-gelderland" alt="Image">
+        <p>Omroep Gelderland</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player18">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/omroep-brabant" alt="Image">
+        <p>Omroep Brabant</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player19">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/radio-oost" alt="Image">
+        <p>Rtv Oost</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player20">▶️</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://www.mp3streams.nl/logo/z/kink" alt="Image">
+        <p>KINK</p>
+        <div class="overlay">
+            <button class="play-pause-button" data-player="player21">▶️</button>
+        </div>
+    </div>
+
+    <audio id="player1" class="audio-player" src="https://icecast-qmusicnl-cdp.triple-it.nl/Qmusic_nl_live.mp3?aw_0_1st.playerId=redirect"></audio>
+    <audio id="player2" class="audio-player" src="https://22333.live.streamtheworld.com/SLAM_MP3_SC"></audio>
+    <audio id="player3" class="audio-player" src="https://22533.live.streamtheworld.com/SKYRADIO.mp3"></audio>
+    <audio id="player4" class="audio-player" src="https://25543.live.streamtheworld.com/RADIO538.mp3"></audio>
+    <audio id="player5" class="audio-player" src="https://icecast.omroep.nl/radio1-bb-aac"></audio>
+    <audio id="player6" class="audio-player" src="https://icecast.omroep.nl/radio2-bb-aac"></audio>
+    <audio id="player7" class="audio-player" src="https://icecast.omroep.nl/3fm-bb-aac"></audio>
+    <audio id="player8" class="audio-player" src="https://www.mp3streams.nl/zender/npo-radio-4/stream/5-aac-64"></audio>
+    <audio id="player9" class="audio-player" src="https://www.mp3streams.nl/zender/npo-radio-5/stream/6-aac-64"></audio>
+    <audio id="player10" class="audio-player" src="https://www.mp3streams.nl/zender/100-nl/stream/15-aac-96"></audio>
+    <audio id="player11" class="audio-player" src="https://22723.live.streamtheworld.com/SUBLIME.mp3"></audio>
+    <audio id="player12" class="audio-player" src="https://28013.live.streamtheworld.com/RADIO10.mp3"></audio>
+    <audio id="player13" class="audio-player" src="https://www.mp3streams.nl/zender/efteling-kids-radio/stream/107-mp3-192"></audio>
+    <audio id="player14" class="audio-player" src="https://www.mp3streams.nl/zender/funx/stream/12-mp3-192"></audio>
+    <audio id="player15" class="audio-player" src="https://22653.live.streamtheworld.com/BNR_NIEUWSRADIO.mp3"></audio>
+    <audio id="player16" class="audio-player" src="https://www.mp3streams.nl/zender/omrop-fryslan/stream/28-mp3-192"></audio>
+    <audio id="player17" class="audio-player" src="https://www.mp3streams.nl/zender/rtv-noord/stream/29-mp3-192"></audio>
+    <audio id="player18" class="audio-player" src="https://www.mp3streams.nl/zender/radio-gelderland/stream/33-mp3-192"></audio>
+    <audio id="player19" class="audio-player" src="https://www.mp3streams.nl/zender/omroep-brabant/stream/35-mp3-256"></audio>
+    <audio id="player20" class="audio-player" src="https://www.mp3streams.nl/zender/radio-oost/stream/32-aac-128"></audio>
+    <audio id="player21" class="audio-player" src="https://www.mp3streams.nl/zender/kink/stream/19-aac-128"></audio>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll('.play-pause-button');
+            
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const playerId = button.getAttribute('data-player');
+                    const player = document.getElementById(playerId);
+                    
+                    if (player.paused) {
+                        player.play();
+                        button.textContent = '⏸️';
+                    } else {
+                        player.pause();
+                        button.textContent = '▶️';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
