@@ -1,5 +1,4 @@
-# RadioNet
-![alt text](http://url/to/img.png)
+![alt text](logo.png)
 ## How To Install?
 
 1. go to the [release's](https://github.com/JesseHoekema/RadioNet/releases/tag/new) page install the newest .exe file
